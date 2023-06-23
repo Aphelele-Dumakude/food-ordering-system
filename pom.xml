@@ -23,6 +23,7 @@
 
     <properties>
        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <mockito.version>5.3.1</mockito.version>
     </properties>
 
     <dependencyManagement>
@@ -57,10 +58,27 @@
                 <artifactId>common-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <dependencies></dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>
