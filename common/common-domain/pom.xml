@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.food.ordering.system</groupId>
         <artifactId>common</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>fastfood-2023.6</version>
     </parent>
 
     <artifactId>common-domain</artifactId>
