@@ -1,5 +1,7 @@
 package com.food.ordering.system.order.service.application.exception.handler;
 
+import com.food.ordering.system.application.handler.ErrorDTO;
+import com.food.ordering.system.application.handler.GlobalExceptionHandler;
 import com.food.ordering.system.order.service.domain.exception.OrderDomainException;
 import com.food.ordering.system.order.service.domain.exception.OrderNotFoundException;
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @ControllerAdvice
-public class OrderGlobalExceptionHandler {
+public class OrderGlobalExceptionHandler extends GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = {OrderDomainException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
