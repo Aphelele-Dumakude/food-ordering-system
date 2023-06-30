@@ -13,7 +13,7 @@
 
     <artifactId>infrastructure</artifactId>
 
-    <properties>
-    </properties>
-
+    <modules>
+        <module>kafka</module>
+    </modules>
 </project>
