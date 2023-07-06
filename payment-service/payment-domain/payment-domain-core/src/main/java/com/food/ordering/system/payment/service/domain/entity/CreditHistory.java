@@ -1,13 +1,13 @@
 package com.food.ordering.system.payment.service.domain.entity;
 
 import com.food.ordering.system.domain.entity.BaseEntity;
-import com.food.ordering.system.domain.valueobject.CustomerID;
+import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.payment.service.domain.valueobject.CreditHistoyId;
 import com.food.ordering.system.payment.service.domain.valueobject.TransactionType;
 
 public class CreditHistory extends BaseEntity<CreditHistoyId> {
-    private final CustomerID customerID;
+    private final CustomerId customerID;
     private final Money amount;
     private final TransactionType transactionType;
 
@@ -20,7 +20,7 @@ public class CreditHistory extends BaseEntity<CreditHistoyId> {
 
     public static final class Builder {
         private CreditHistoyId creditHistoyId;
-        private CustomerID customerID;
+        private CustomerId customerID;
         private Money amount;
         private TransactionType transactionType;
 
@@ -36,7 +36,7 @@ public class CreditHistory extends BaseEntity<CreditHistoyId> {
             return this;
         }
 
-        public Builder customerID(CustomerID val) {
+        public Builder customerID(CustomerId val) {
             customerID = val;
             return this;
         }
@@ -55,7 +55,7 @@ public class CreditHistory extends BaseEntity<CreditHistoyId> {
             return new CreditHistory(this);
         }
     }
-    public CustomerID getCustomerID() {
+    public CustomerId getCustomerID() {
         return customerID;
     }
 

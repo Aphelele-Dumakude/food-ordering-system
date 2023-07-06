@@ -1,6 +1,6 @@
 package com.food.ordering.system.order.service.domain.mapper;
 
-import com.food.ordering.system.domain.valueobject.CustomerID;
+import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.ProductID;
 import com.food.ordering.system.domain.valueobject.RestaurantID;
@@ -32,7 +32,7 @@ public class OrderDataMapper {
     }
     public Order createOrderCommandToOrder(CreateOrderCommand createOrderCommand) {
         return Order.Builder.builder()
-                .customerID(new CustomerID(createOrderCommand.getCustomerID()))
+                .customerID(new CustomerId(createOrderCommand.getCustomerID()))
                 .restaurantID(new RestaurantID(createOrderCommand.getRestaurantID()))
                 .streetAddress(orderAddressToStreetAddress(createOrderCommand.getOrderAddress()))
                 .price(new Money(createOrderCommand.getPrice()))

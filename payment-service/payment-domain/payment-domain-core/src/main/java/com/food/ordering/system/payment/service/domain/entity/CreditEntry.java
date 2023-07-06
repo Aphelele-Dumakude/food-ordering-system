@@ -1,12 +1,12 @@
 package com.food.ordering.system.payment.service.domain.entity;
 
 import com.food.ordering.system.domain.entity.BaseEntity;
-import com.food.ordering.system.domain.valueobject.CustomerID;
+import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.payment.service.domain.valueobject.CreditEntryId;
 
 public class CreditEntry extends BaseEntity<CreditEntryId> {
-    private final CustomerID customerID;
+    private final CustomerId customerID;
     private Money totalCreditAmount;
 
     private CreditEntry(Builder builder) {
@@ -22,7 +22,7 @@ public class CreditEntry extends BaseEntity<CreditEntryId> {
     }
 
 
-    public CustomerID getCustomerID() {
+    public CustomerId getCustomerID() {
         return customerID;
     }
 
@@ -32,7 +32,7 @@ public class CreditEntry extends BaseEntity<CreditEntryId> {
 
     public static final class Builder {
         private CreditEntryId creditEntryId;
-        private CustomerID customerID;
+        private CustomerId customerID;
         private Money totalCreditAmount;
 
         private Builder() {
@@ -47,7 +47,7 @@ public class CreditEntry extends BaseEntity<CreditEntryId> {
             return this;
         }
 
-        public Builder customerID(CustomerID val) {
+        public Builder customerID(CustomerId val) {
             customerID = val;
             return this;
         }

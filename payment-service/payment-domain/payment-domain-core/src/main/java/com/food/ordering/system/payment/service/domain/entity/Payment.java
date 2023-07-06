@@ -1,7 +1,7 @@
 package com.food.ordering.system.payment.service.domain.entity;
 
 import com.food.ordering.system.domain.entity.AggregateRoot;
-import com.food.ordering.system.domain.valueobject.CustomerID;
+import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.OrderID;
 import com.food.ordering.system.domain.valueobject.PaymentStatus;
@@ -15,7 +15,7 @@ import java.util.UUID;
 public class Payment extends AggregateRoot<PaymentId> {
 
     private final OrderID orderID;
-    private final CustomerID customerID;
+    private final CustomerId customerID;
     private final Money price;
     private PaymentStatus paymentStatus;
     private ZonedDateTime createdAt;
@@ -46,7 +46,7 @@ public class Payment extends AggregateRoot<PaymentId> {
     public static final class Builder {
         private PaymentId paymentId;
         private OrderID orderID;
-        private CustomerID customerID;
+        private CustomerId customerID;
         private Money price;
         private PaymentStatus paymentStatus;
         private ZonedDateTime createdAt;
@@ -68,7 +68,7 @@ public class Payment extends AggregateRoot<PaymentId> {
             return this;
         }
 
-        public Builder customerID(CustomerID val) {
+        public Builder customerID(CustomerId val) {
             customerID = val;
             return this;
         }
@@ -96,7 +96,7 @@ public class Payment extends AggregateRoot<PaymentId> {
         return orderID;
     }
 
-    public CustomerID getCustomerID() {
+    public CustomerId getCustomerID() {
         return customerID;
     }
 

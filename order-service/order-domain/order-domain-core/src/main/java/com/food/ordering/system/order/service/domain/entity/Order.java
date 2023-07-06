@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Order extends AggregateRoot<OrderID> {
-    private final CustomerID customerID;
+    private final CustomerId customerID;
     private final RestaurantID restaurantID;
     private final StreetAddress streetAddress;
     private final Money price;
@@ -123,7 +123,7 @@ public class Order extends AggregateRoot<OrderID> {
 
     public static final class Builder {
         private OrderID orderID;
-        private CustomerID customerID;
+        private CustomerId customerID;
         private RestaurantID restaurantID;
         private StreetAddress streetAddress;
         private Money price;
@@ -144,7 +144,7 @@ public class Order extends AggregateRoot<OrderID> {
             return this;
         }
 
-        public Builder customerID(CustomerID val) {
+        public Builder customerID(CustomerId val) {
             customerID = val;
             return this;
         }
@@ -189,7 +189,7 @@ public class Order extends AggregateRoot<OrderID> {
         }
 
     }
-    public CustomerID getCustomerID() {
+    public CustomerId getCustomerID() {
         return customerID;
     }
 

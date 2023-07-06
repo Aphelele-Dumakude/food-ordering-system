@@ -127,7 +127,7 @@ public class OrderApplicationServiceTest {
                 .build();
 
         Customer customer = new Customer();
-        customer.setId(new CustomerID(CUSTOMER_ID));
+        customer.setId(new CustomerId(CUSTOMER_ID));
 
         Restaurant restaurantResponse = Restaurant.Builder.builder()
                 .restaurantID(new RestaurantID(createOrderCommand.getRestaurantID()))
