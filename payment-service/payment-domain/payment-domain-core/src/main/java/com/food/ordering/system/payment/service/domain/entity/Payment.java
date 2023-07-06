@@ -15,7 +15,7 @@ import java.util.UUID;
 public class Payment extends AggregateRoot<PaymentId> {
 
     private final OrderID orderID;
-    private final CustomerId customerID;
+    private final CustomerId customerId;
     private final Money price;
     private PaymentStatus paymentStatus;
     private ZonedDateTime createdAt;
@@ -37,7 +37,7 @@ public class Payment extends AggregateRoot<PaymentId> {
     private Payment(Builder builder) {
         setId(builder.paymentId);
         orderID = builder.orderID;
-        customerID = builder.customerID;
+        customerId = builder.customerId;
         price = builder.price;
         paymentStatus = builder.paymentStatus;
         createdAt = builder.createdAt;
@@ -46,7 +46,7 @@ public class Payment extends AggregateRoot<PaymentId> {
     public static final class Builder {
         private PaymentId paymentId;
         private OrderID orderID;
-        private CustomerId customerID;
+        private CustomerId customerId;
         private Money price;
         private PaymentStatus paymentStatus;
         private ZonedDateTime createdAt;
@@ -68,8 +68,8 @@ public class Payment extends AggregateRoot<PaymentId> {
             return this;
         }
 
-        public Builder customerID(CustomerId val) {
-            customerID = val;
+        public Builder customerId(CustomerId val) {
+            customerId = val;
             return this;
         }
 
@@ -96,8 +96,8 @@ public class Payment extends AggregateRoot<PaymentId> {
         return orderID;
     }
 
-    public CustomerId getCustomerID() {
-        return customerID;
+    public CustomerId getCustomerId() {
+        return customerId;
     }
 
     public Money getPrice() {

@@ -3,5 +3,5 @@ package com.food.ordering.system.payment.service.domain.ports.output.message.pub
 import com.food.ordering.system.domain.events.publisher.DomainEventPublisher;
 import com.food.ordering.system.payment.service.domain.event.PaymentFailedEvent;
 
-public interface PaymentFailedMessageListener extends DomainEventPublisher<PaymentFailedEvent> {
+public interface PaymentFailedMessagePublisher extends DomainEventPublisher<PaymentFailedEvent> {
 }
