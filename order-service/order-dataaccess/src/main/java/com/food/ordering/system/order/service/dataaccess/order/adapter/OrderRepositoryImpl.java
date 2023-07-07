@@ -4,7 +4,7 @@ import com.food.ordering.system.order.service.dataaccess.order.mapper.OrderDataA
 import com.food.ordering.system.order.service.dataaccess.order.repository.OrderJpaRepository;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
-import com.food.ordering.system.order.service.domain.valueobject.TrackingID;
+import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -27,7 +27,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public Optional<Order> findByTrackingID(TrackingID trackingID) {
+    public Optional<Order> findByTrackingID(TrackingId trackingID) {
         return orderJpaRepository.findByTrackingId(trackingID.getValue())
                 .map(orderDataAccessMapper::orderEntityToOrder);
     }

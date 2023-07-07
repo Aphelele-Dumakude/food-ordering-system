@@ -130,14 +130,14 @@ public class OrderApplicationServiceTest {
         customer.setId(new CustomerId(CUSTOMER_ID));
 
         Restaurant restaurantResponse = Restaurant.Builder.builder()
-                .restaurantID(new RestaurantID(createOrderCommand.getRestaurantID()))
-                .products(List.of(new Product(new ProductID(PRODUCT_ID), "product-1", new Money(new BigDecimal("50.00"))),
-                        new Product(new ProductID(PRODUCT_ID), "product-2", new Money(new BigDecimal("50.00")))))
+                .restaurantID(new RestaurantId(createOrderCommand.getRestaurantID()))
+                .products(List.of(new Product(new ProductId(PRODUCT_ID), "product-1", new Money(new BigDecimal("50.00"))),
+                        new Product(new ProductId(PRODUCT_ID), "product-2", new Money(new BigDecimal("50.00")))))
                 .active(true)
                 .build();
 
         Order order = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
-        order.setId(new OrderID(ORDER_ID));
+        order.setId(new OrderId(ORDER_ID));
 
         when(customerRepository.findCustomer(CUSTOMER_ID)).thenReturn(Optional.of(customer));
         when(restaurantRepository.findRestaurantInformation(orderDataMapper.createOrderCommandToRestaurant(createOrderCommand)))
@@ -172,9 +172,9 @@ public class OrderApplicationServiceTest {
     @Test
     public void testCreateOrderWithPassiveRestaurant() {
         Restaurant restaurantResponse = Restaurant.Builder.builder()
-                .restaurantID(new RestaurantID(createOrderCommand.getRestaurantID()))
-                .products(List.of(new Product(new ProductID(PRODUCT_ID), "product-1", new Money(new BigDecimal("50.00"))),
-                        new Product(new ProductID(PRODUCT_ID), "product-2", new Money(new BigDecimal("50.00")))))
+                .restaurantID(new RestaurantId(createOrderCommand.getRestaurantID()))
+                .products(List.of(new Product(new ProductId(PRODUCT_ID), "product-1", new Money(new BigDecimal("50.00"))),
+                        new Product(new ProductId(PRODUCT_ID), "product-2", new Money(new BigDecimal("50.00")))))
                 .active(false)
                 .build();
         when(restaurantRepository.findRestaurantInformation(orderDataMapper.createOrderCommandToRestaurant(createOrderCommand)))

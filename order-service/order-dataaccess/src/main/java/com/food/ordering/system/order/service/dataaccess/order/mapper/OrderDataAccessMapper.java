@@ -7,9 +7,9 @@ import com.food.ordering.system.order.service.dataaccess.order.entity.OrderItemE
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.entity.OrderItem;
 import com.food.ordering.system.order.service.domain.entity.Product;
-import com.food.ordering.system.order.service.domain.valueobject.OrderItemID;
+import com.food.ordering.system.order.service.domain.valueobject.OrderItemId;
 import com.food.ordering.system.order.service.domain.valueobject.StreetAddress;
-import com.food.ordering.system.order.service.domain.valueobject.TrackingID;
+import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -42,13 +42,13 @@ public class OrderDataAccessMapper {
 
     public Order orderEntityToOrder(OrderEntity orderEntity) {
         return Order.Builder.builder()
-                .orderID(new OrderID(orderEntity.getId()))
+                .orderID(new OrderId(orderEntity.getId()))
                 .customerID(new CustomerId(orderEntity.getCustomerId()))
-                .restaurantID(new RestaurantID(orderEntity.getRestaurantId()))
+                .restaurantID(new RestaurantId(orderEntity.getRestaurantId()))
                 .streetAddress(addressEntityToDeliveryAddress(orderEntity.getOrderAddressEntity()))
                 .price(new Money(orderEntity.getPrice()))
                 .items(orderItemEntitiesToOrderItems(orderEntity.getOrderItemEntityList()))
-                .trackingID(new TrackingID(orderEntity.getTrackingId()))
+                .trackingID(new TrackingId(orderEntity.getTrackingId()))
                 .failureMessages(orderEntity.getFailureMessages().isEmpty() ? new ArrayList<>() :
                         new ArrayList<>(Arrays.asList(orderEntity.getFailureMessages()
                                 .split(","))))
@@ -58,8 +58,8 @@ public class OrderDataAccessMapper {
     private List<OrderItem> orderItemEntitiesToOrderItems(List<OrderItemEntity> orderItemEntityList) {
         return orderItemEntityList.stream()
                 .map(orderItemEntity -> OrderItem.Builder.builder()
-                        .orderItemID(new OrderItemID(orderItemEntity.getId()))
-                        .product(new Product(new ProductID(orderItemEntity.getProductId())))
+                        .orderItemID(new OrderItemId(orderItemEntity.getId()))
+                        .product(new Product(new ProductId(orderItemEntity.getProductId())))
                         .price(new Money(orderItemEntity.getPrice()))
                         .quantity(orderItemEntity.getQuantity())
                         .subTotal(new Money(orderItemEntity.getSubTotal()))

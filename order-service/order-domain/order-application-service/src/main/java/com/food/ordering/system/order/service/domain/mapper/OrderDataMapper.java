@@ -2,8 +2,8 @@ package com.food.ordering.system.order.service.domain.mapper;
 
 import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
-import com.food.ordering.system.domain.valueobject.ProductID;
-import com.food.ordering.system.domain.valueobject.RestaurantID;
+import com.food.ordering.system.domain.valueobject.ProductId;
+import com.food.ordering.system.domain.valueobject.RestaurantId;
 import com.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
 import com.food.ordering.system.order.service.domain.dto.create.CreateOrderResponse;
 import com.food.ordering.system.order.service.domain.dto.create.OrderAddress;
@@ -24,16 +24,16 @@ public class OrderDataMapper {
 
     public Restaurant createOrderCommandToRestaurant(CreateOrderCommand createOrderCommand) {
         return Restaurant.Builder.builder()
-                .restaurantID(new RestaurantID(createOrderCommand.getRestaurantID()))
+                .restaurantID(new RestaurantId(createOrderCommand.getRestaurantID()))
                 .products(createOrderCommand.getItems().stream().map(orderItem ->
-                        new Product(new ProductID(orderItem.getProductID())))
+                        new Product(new ProductId(orderItem.getProductID())))
                                 .collect(Collectors.toList()))
                 .build();
     }
     public Order createOrderCommandToOrder(CreateOrderCommand createOrderCommand) {
         return Order.Builder.builder()
                 .customerID(new CustomerId(createOrderCommand.getCustomerID()))
-                .restaurantID(new RestaurantID(createOrderCommand.getRestaurantID()))
+                .restaurantID(new RestaurantId(createOrderCommand.getRestaurantID()))
                 .streetAddress(orderAddressToStreetAddress(createOrderCommand.getOrderAddress()))
                 .price(new Money(createOrderCommand.getPrice()))
                 .items(orderItemsTpOrderItemsEntities(createOrderCommand.getItems()))
@@ -59,7 +59,7 @@ public class OrderDataMapper {
         return items.stream()
                 .map(orderItem ->
                                 OrderItem.Builder.builder()
-                                        .product(new Product(new ProductID(orderItem.getProductID())))
+                                        .product(new Product(new ProductId(orderItem.getProductID())))
                                         .price(new Money(orderItem.getPrice()))
                                         .quantity(orderItem.getQuantity())
                                         .subTotal(new Money(orderItem.getSubTotal()))

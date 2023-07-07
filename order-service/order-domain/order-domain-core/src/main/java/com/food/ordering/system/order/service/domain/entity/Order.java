@@ -3,26 +3,26 @@ package com.food.ordering.system.order.service.domain.entity;
 import com.food.ordering.system.domain.entity.AggregateRoot;
 import com.food.ordering.system.domain.valueobject.*;
 import com.food.ordering.system.order.service.domain.exception.OrderDomainException;
-import com.food.ordering.system.order.service.domain.valueobject.OrderItemID;
+import com.food.ordering.system.order.service.domain.valueobject.OrderItemId;
 import com.food.ordering.system.order.service.domain.valueobject.StreetAddress;
-import com.food.ordering.system.order.service.domain.valueobject.TrackingID;
+import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
 
 import java.util.List;
 import java.util.UUID;
 
-public class Order extends AggregateRoot<OrderID> {
+public class Order extends AggregateRoot<OrderId> {
     private final CustomerId customerID;
-    private final RestaurantID restaurantID;
+    private final RestaurantId restaurantID;
     private final StreetAddress streetAddress;
     private final Money price;
     private final List<OrderItem> items;
-    private TrackingID trackingID;
+    private TrackingId trackingID;
     private OrderStatus orderStatus;
     private List<String> failureMessages;
 
     public void initializeOrder() {
-        setId(new OrderID(UUID.randomUUID()));
-        trackingID = new TrackingID(UUID.randomUUID());
+        setId(new OrderId(UUID.randomUUID()));
+        trackingID = new TrackingId(UUID.randomUUID());
         orderStatus = OrderStatus.PENDING;
         initializeOrderItems();
     }
@@ -105,7 +105,7 @@ public class Order extends AggregateRoot<OrderID> {
     private void initializeOrderItems() {
         long itemID = 1;
         for (OrderItem orderItem: items) {
-            orderItem.initializeOrderItems(super.getId(), new OrderItemID(itemID++));
+            orderItem.initializeOrderItems(super.getId(), new OrderItemId(itemID++));
         }
     }
 
@@ -122,13 +122,13 @@ public class Order extends AggregateRoot<OrderID> {
     }
 
     public static final class Builder {
-        private OrderID orderID;
+        private OrderId orderID;
         private CustomerId customerID;
-        private RestaurantID restaurantID;
+        private RestaurantId restaurantID;
         private StreetAddress streetAddress;
         private Money price;
         private List<OrderItem> items;
-        private TrackingID trackingID;
+        private TrackingId trackingID;
         private OrderStatus orderStatus;
         private List<String> failureMessages;
 
@@ -139,7 +139,7 @@ public class Order extends AggregateRoot<OrderID> {
             return new Builder();
         }
 
-        public Builder orderID(OrderID val) {
+        public Builder orderID(OrderId val) {
             orderID = val;
             return this;
         }
@@ -149,7 +149,7 @@ public class Order extends AggregateRoot<OrderID> {
             return this;
         }
 
-        public Builder restaurantID(RestaurantID val) {
+        public Builder restaurantID(RestaurantId val) {
             restaurantID = val;
             return this;
         }
@@ -169,7 +169,7 @@ public class Order extends AggregateRoot<OrderID> {
             return this;
         }
 
-        public Builder trackingID(TrackingID val) {
+        public Builder trackingID(TrackingId val) {
             trackingID = val;
             return this;
         }
@@ -193,7 +193,7 @@ public class Order extends AggregateRoot<OrderID> {
         return customerID;
     }
 
-    public RestaurantID getRestaurantID() {
+    public RestaurantId getRestaurantID() {
         return restaurantID;
     }
 
@@ -209,7 +209,7 @@ public class Order extends AggregateRoot<OrderID> {
         return items;
     }
 
-    public TrackingID getTrackingID() {
+    public TrackingId getTrackingID() {
         return trackingID;
     }
 

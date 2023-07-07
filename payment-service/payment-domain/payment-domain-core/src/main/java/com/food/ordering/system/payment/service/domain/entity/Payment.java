@@ -3,7 +3,7 @@ package com.food.ordering.system.payment.service.domain.entity;
 import com.food.ordering.system.domain.entity.AggregateRoot;
 import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.domain.valueobject.Money;
-import com.food.ordering.system.domain.valueobject.OrderID;
+import com.food.ordering.system.domain.valueobject.OrderId;
 import com.food.ordering.system.domain.valueobject.PaymentStatus;
 import com.food.ordering.system.payment.service.domain.valueobject.PaymentId;
 
@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class Payment extends AggregateRoot<PaymentId> {
 
-    private final OrderID orderID;
+    private final OrderId orderId;
     private final CustomerId customerId;
     private final Money price;
     private PaymentStatus paymentStatus;
@@ -36,7 +36,7 @@ public class Payment extends AggregateRoot<PaymentId> {
 
     private Payment(Builder builder) {
         setId(builder.paymentId);
-        orderID = builder.orderID;
+        orderId = builder.orderId;
         customerId = builder.customerId;
         price = builder.price;
         paymentStatus = builder.paymentStatus;
@@ -45,7 +45,7 @@ public class Payment extends AggregateRoot<PaymentId> {
 
     public static final class Builder {
         private PaymentId paymentId;
-        private OrderID orderID;
+        private OrderId orderId;
         private CustomerId customerId;
         private Money price;
         private PaymentStatus paymentStatus;
@@ -63,8 +63,8 @@ public class Payment extends AggregateRoot<PaymentId> {
             return this;
         }
 
-        public Builder orderID(OrderID val) {
-            orderID = val;
+        public Builder orderId(OrderId val) {
+            orderId = val;
             return this;
         }
 
@@ -92,8 +92,8 @@ public class Payment extends AggregateRoot<PaymentId> {
             return new Payment(this);
         }
     }
-    public OrderID getOrderID() {
-        return orderID;
+    public OrderId getOrderId() {
+        return orderId;
     }
 
     public CustomerId getCustomerId() {

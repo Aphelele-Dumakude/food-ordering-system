@@ -2,11 +2,11 @@ package com.food.ordering.system.order.service.domain.entity;
 
 import com.food.ordering.system.domain.entity.BaseEntity;
 import com.food.ordering.system.domain.valueobject.Money;
-import com.food.ordering.system.domain.valueobject.OrderID;
-import com.food.ordering.system.order.service.domain.valueobject.OrderItemID;
+import com.food.ordering.system.domain.valueobject.OrderId;
+import com.food.ordering.system.order.service.domain.valueobject.OrderItemId;
 
-public class OrderItem extends BaseEntity<OrderItemID> {
-    private OrderID orderID;
+public class OrderItem extends BaseEntity<OrderItemId> {
+    private OrderId orderID;
     private final Product product;
     private final int quantity;
     private final Money price;
@@ -20,7 +20,7 @@ public class OrderItem extends BaseEntity<OrderItemID> {
         subTotal = builder.subTotal;
     }
 
-    void initializeOrderItems(OrderID orderID, OrderItemID orderItemID) {
+    void initializeOrderItems(OrderId orderID, OrderItemId orderItemID) {
         this.orderID = orderID;
         super.setId(orderItemID);
     }
@@ -32,7 +32,7 @@ public class OrderItem extends BaseEntity<OrderItemID> {
     }
 
     public static final class Builder {
-        private OrderItemID orderItemID;
+        private OrderItemId orderItemID;
         private Product product;
         private int quantity;
         private Money price;
@@ -45,7 +45,7 @@ public class OrderItem extends BaseEntity<OrderItemID> {
             return new Builder();
         }
 
-        public Builder orderItemID(OrderItemID val) {
+        public Builder orderItemID(OrderItemId val) {
             orderItemID = val;
             return this;
         }
@@ -75,7 +75,7 @@ public class OrderItem extends BaseEntity<OrderItemID> {
         }
     }
 
-    public OrderID getOrderID() {
+    public OrderId getOrderID() {
         return orderID;
     }
 
